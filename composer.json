@@ -1,7 +1,6 @@
 {
     "name": "filippo-toso/fulltext",
-    "description": " Easily add fulltext search capabilities to your Eloquent models
-",
+    "description": "Easily add fulltext search capabilities to your Eloquent models",
     "license": "MIT",
     "authors": [
         {
