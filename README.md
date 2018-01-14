@@ -62,7 +62,7 @@ class AddIndexesToUsersTable extends Migration
 
 ```
 
-Enable fulltext functions within the users model:
+Enable fulltext functions within the User model (for instance):
 
 ```
 namespace App;
