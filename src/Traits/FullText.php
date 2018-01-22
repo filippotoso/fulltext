@@ -25,7 +25,7 @@ trait FullText
      * @param  QueryBuilder  $query   [description]
      * @param  string|array  $columns Columns to be included in the search
      * @param  string        $text    Text to execute the search against
-     * @return void
+     * @return QueryBuilder
      */
     public function scopeWhereMatch($query, $columns, $text) {
 
@@ -37,7 +37,7 @@ trait FullText
 
         $sql = sprintf('MATCH (%s) AGAINST (? IN NATURAL LANGUAGE MODE)', implode(',', $columns));
 
-        $query->whereRaw($sql, [$text]);
+        return $query->whereRaw($sql, [$text]);
 
     }
 
@@ -48,7 +48,7 @@ trait FullText
      * @param  string|array  $columns Columns to be included in the search
      * @param  string        $text    Text to execute the search against
      * @param  string|null   $name    Name of the field (optional, default: score)
-     * @return void
+     * @return QueryBuilder
      */
     public function scopeSelectMatchScore($query, $columns, $text, $name = 'score') {
 
@@ -64,7 +64,7 @@ trait FullText
 
         $sql = sprintf('MATCH (%s) AGAINST (%s IN NATURAL LANGUAGE MODE) AS %s', implode(',', $columns), $text, $name);
 
-        $query->addSelect(DB::raw($sql));
+        return $query->addSelect(DB::raw($sql));
 
     }
 
