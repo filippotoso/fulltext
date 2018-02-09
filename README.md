@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-use FilippoToso\Fulltext\Fulltext;
+use FilippoToso\Fulltext\FullText;
 
 class AddIndexesToUsersTable extends Migration
 {
@@ -36,10 +36,10 @@ class AddIndexesToUsersTable extends Migration
     public function up()
     {
         // Create a fulltext index in the users table for the first_name and last_name columns
-        Fulltext::fullTextIndex('users', ['first_name', 'last_name']);
+        FullText::fullTextIndex('users', ['first_name', 'last_name']);
 
         // You can also specify a name for the index with the third parameter
-        Fulltext::fullTextIndex('users', ['city', 'address', 'country'], 'search_address');
+        FullText::fullTextIndex('users', ['city', 'address', 'country'], 'search_address');
 
     }
 
